@@ -1,7 +1,8 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, useColorScheme } from 'react-native'
 import React from 'react'
 import { Stack, Tabs, Redirect } from 'expo-router'
 import {icons} from "../../../constants";
+
 
 const TabIcon= ({icon, color, name, focused}) => {
   return (
@@ -10,15 +11,28 @@ const TabIcon= ({icon, color, name, focused}) => {
       source={icon}
       // resizeMode='containe'
       tintColor={color}/> 
-      <Text className={`{$focused? "font-psemibold : "font-pregular} text-xs ` }>{name}</Text>
+      <Text className={`{$focused? "font-psemibold : "font-pregular} text-xs dark:color-white ` }>{name}</Text>
     </View>
   )
 }
 
 const TabsLayout = () => {
+  const colorScheme = useColorScheme();
+  // console.log(colorScheme);
+
   return (
-    <Tabs screenOptions={{
-      tabBarShowLabel: false
+    <Tabs 
+    screenOptions={{
+      tabBarShowLabel: false,
+      tabBarActiveBackgroundColor: colorScheme==="dark" ? "#2b2828" : "#3e7bab",
+      tabBarInactiveBackgroundColor: colorScheme==="dark" ? "#000" : "#ffffff",
+      tabBarInactiveTintColor : colorScheme==="dark" ? "#910901" : "#3e7bab",
+      tabBarActiveTintColor: colorScheme==="dark" ? "#d1b906" : "#c96522",
+      tabBarStyle: {
+        borderTopColor: '#3e7bab',
+        borderTopWidth: 1,
+        height: 84
+      }
     }}>
       <Tabs.Screen 
       name="home"
