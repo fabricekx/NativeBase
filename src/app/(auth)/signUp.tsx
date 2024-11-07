@@ -59,6 +59,7 @@ console.log(" ca devrait marcher");
 
           <FormField
             title="Username"
+            placeholder="Votre nom"
             value={form.username}
             handleChangeText={(e) => setForm({ ...form, username: e })}
             otherStyles="mt-10"
@@ -66,6 +67,7 @@ console.log(" ca devrait marcher");
 
           <FormField
             title="Email"
+            
             value={form.email}
             handleChangeText={(e) => setForm({ ...form, email: e })}
             otherStyles="mt-7"

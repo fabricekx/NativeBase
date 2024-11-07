@@ -153,20 +153,21 @@ import {
     let fileUrl;
   
     try {
-      if (type === "video") {
-        fileUrl = storage.getFileView(appwriteConfig.storageId, fileId);
-      } else if (type === "image") {
-        fileUrl = storage.getFilePreview(
-          appwriteConfig.storageId,
-          fileId,
-          2000,
-          2000,
-          "top",
-          100
-        );
-      } else {
-        throw new Error("Invalid file type");
-      }
+      // if (type === "video") {
+      //   fileUrl = storage.getFileView(appwriteConfig.storageId, fileId);
+      // } else if (type === "image") {
+      //   fileUrl = storage.getFilePreview(
+      //     appwriteConfig.storageId,
+      //     fileId,
+      //     2000,
+      //     2000,
+      //     "top",
+      //     100
+        // )
+        ;
+      // } else {
+      //   throw new Error("Invalid file type");
+      // }
   
       if (!fileUrl) throw Error;
   
