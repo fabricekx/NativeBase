@@ -1,17 +1,21 @@
 import { Link, router, Redirect } from "expo-router";
 import React from "react";
-import { Image, ScrollView, StatusBar, Text, View } from "react-native";
+import { Image, ScrollView, Text, View } from "react-native";
 import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 import {images} from "../../constants";
 import CustomButton from "componants/customButton";
-
+import { StatusBar } from "expo-status-bar";
+import { useGlobalContext } from "../../context/GlobalProvider";
 
 
 export default function App() {
+
+  const {loading, isLogged} = useGlobalContext(); // permet, grace à notre GlobalProvider et à appWrite de savoir si un user est connecté ou non
+  if (!loading && isLogged) return <Redirect href="/home" />;
   return (
     <SafeAreaView className=" bg-slate-50 dark:bg-black-200 h-full">
 <ScrollView contentContainerStyle={{ height: '100%'}}>
-<View className= " w-full justify-center items-center h-full px-4">
+<View className= " w-full justify-center items-center min-h-[85vh] px-4">
 <Image className="w-[130px] h-[84px]"
 resizeMode="contain" // permet à l'image de s'adapter à la taille de son container
 source={images.logo}
@@ -33,7 +37,7 @@ resizeMode="contain"
 
 <CustomButton
      title="Continue with Email"
-     handlePress={() => router.push("../sign-in")}
+     handlePress={() => router.push("../(auth)/signIn")}
      containerStyles="w-full mt-7 "/>
 </View>
 </ScrollView>
